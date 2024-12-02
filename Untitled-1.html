@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Chemistry Learning</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; }
+  </style>
+  <link rel="icon" type="image/x-icon" href="img/Methanol.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a-scene>
+    <!-- Освітлення сцени -->
+    <a-light type="directional" position="2 4 -3" intensity="1"></a-light>
+    <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+
+    <!-- Молекула метанолу -->
+      <a-text position="0 2 -5" color="#000000">
+      <p >Молекула метанолу!</p></a-text>
+      <a-entity id="methanol" position="0 1.5 -3" scale="0.5 0.5 0.5"  animation__scale="property: scale; to: 1 1 1; dur: 1000; easing: easeInOutSine; loop: true; dir: alternate"
+      animation__rotation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true">
+      <!-- Атоми метанолу -->
+      <a-sphere position="0 0 0" radius="0.2" color="#FF0000" class="atom" onclick="showAtomInfo('Carbon')"></a-sphere> <!-- Вуглець -->
+      <a-sphere position="0.5 0 0" radius="0.2" color="#0000FF" class="atom" onclick="showAtomInfo('Oxygen')"></a-sphere> <!-- Кисень -->
+      <a-sphere position="0.6 0 0" radius="0.2" color="#FFFF00" class="atom" onclick="showAtomInfo('Hydrogen')"></a-sphere> <!-- Водень -->
+      <a-sphere position="-0.5 0 0" radius="0.2" color="#FFFF00" class="atom" onclick="showAtomInfo('Hydrogen')"></a-sphere> <!-- Водень -->
+      <a-sphere position="0 0.5 0" radius="0.2" color="#FFFF00" class="atom" onclick="showAtomInfo('Hydrogen')"></a-sphere> <!-- Водень -->
+      <a-sphere position="0 -0.5 0" radius="0.2" color="#FFFF00" class="atom" onclick="showAtomInfo('Hydrogen')"></a-sphere> <!-- Водень -->
+
+      
+      <!-- Зв’язки -->
+      <!-- Зв'язок між вуглецем і киснем -->
+      <a-cylinder position="0.25 0 0" radius="0.05" height="0.5" color="#888888" 
+                  rotation="0 0 90"></a-cylinder>
+
+      <!-- Зв'язок між вуглецем і правим воднем -->
+      <a-cylinder position="-0.25 0 0" radius="0.05" height="0.5" color="#888888" 
+                  rotation="0 0 90"></a-cylinder>
+
+      <!-- Зв'язок між вуглецем і верхнім воднем -->
+      <a-cylinder position="0 0.25 0" radius="0.05" height="0.1" color="#888888" 
+                  rotation="90 0 0"></a-cylinder>
+
+      <!-- Зв'язок між вуглецем і нижнім воднем -->
+      <a-cylinder position="0 -0.25 0" radius="0.05" height="0.1" color="#888888" 
+                  rotation="90 0 0"></a-cylinder>
+
+    </a-entity>
+
+    <!-- Текстове пояснення властивостей метанолу -->
+    <a-text position="0 -1 -5" color="#000000">
+    <p>Метанол: CH<sub>3</sub>&minus;OH</strong>. Має одну -OH групу, використовується як розчинник, але токсичний.</p></a-text> 
+  </a-scene>
+
+</body>
+</html>
